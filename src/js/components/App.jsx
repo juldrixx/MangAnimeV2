@@ -1,24 +1,29 @@
 // src/js/components/App.jsx
 import React from "react";
-import List from "./List.jsx";
-import Form from "./Form.jsx";
-import Post from "./Posts.jsx";
+import { BrowserRouter, Route } from "react-router-dom";
+import Displayer from "./Displayer.jsx";
+import AddForm from "./AddForm.jsx";
+import Navbar from "./Navbar.jsx";
 
 const App = () => (
-    <div className="row mt-5">
-        <div className="col-md-4 offset-md-1">
-            <h2>Articles</h2>
-            <List />
+    <BrowserRouter>
+        <div className="container">
+            <Route exact path="/" component={Navbar} />
+            <Route path="/Manga" render={ () => (
+                <div className="container_display">
+                    <AddForm type="manga" />
+                    <Displayer type="manga" />
+                </div>                
+            )}/>
+            <Route path="/Anime" render={ () => (
+                <div className="container_display">
+                    <AddForm type="anime" />
+                    <Displayer type="anime" />
+                </div>               
+            )}/>
+
         </div>
-        <div className="col-md-4 offset-md-1">
-            <h2>Add a new article</h2>
-            <Form />
-        </div>
-        <div className="col-md-4 offset-md-1">
-            <h2>API posts</h2>
-            <Post />
-        </div>
-    </div>
+    </BrowserRouter>
 );
 
 export default App;

@@ -1,9 +1,20 @@
-import { ADD_ARTICLE } from "../constants/action-types";
+// src/js/actions/index.js
 
-export function addArticle(payload) {
-  return { type: ADD_ARTICLE, payload };
+import { ADD_MANGA, ADD_ANIME, DELETE_ANIME, DELETE_MANGA } from "../constants/action-types";
+
+
+export function addAnime(payload) {
+    return { type: ADD_ANIME, payload };
 }
 
-export function getData() {
-  return { type: "DATA_REQUESTED" };
+export function addManga(payload) {
+    return { type: ADD_MANGA, payload };
+}
+
+export function deleteAnime(payload) {
+    return { type: DELETE_ANIME, payload };
+}
+
+export function deleteManga(payload) {
+  return { type: DELETE_MANGA, payload };
 }

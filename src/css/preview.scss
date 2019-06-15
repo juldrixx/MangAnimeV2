@@ -1,0 +1,49 @@
+.container {
+    max-width: 100% !important;
+    padding: 0 ;
+
+    #preview {
+        width: 100%;
+        height: 100vH;
+        margin: 0;
+    
+        #manga_preview, #anime_preview {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            float: left;
+            overflow: hidden;            
+        }
+        #manga_preview img, #anime_preview img{
+            height: 100%;
+            width: 100%;
+        }
+
+        #manga_preview h1, #anime_preview h1{
+            position: absolute;
+            color: #fff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10vw;
+        }
+
+        .preview_cover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #000;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+        }
+        
+        #manga_preview:hover, #anime_preview:hover {
+            cursor: pointer;
+            .preview_cover {
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
