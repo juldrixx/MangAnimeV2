@@ -30,7 +30,7 @@ function rootReducer(state = initialState, action) {
   }
 
   if (action.type === DELETE_MANGA) {
-    let newMangas = state.animes.filter(manga => {
+    let newMangas = state.mangas.filter(manga => {
       return action.payload !== manga.id;
     });
     

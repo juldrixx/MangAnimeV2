@@ -44,6 +44,21 @@
                 opacity: 0.6;
             }
         }
+
+        .disconnection {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            padding-top: 5px;
+            padding-left: 5px;
+            font-size: 60px;
+        }
+
+        .disconnection:hover {
+            color: rgb(230, 230, 230);
+        }
     }
 }
 

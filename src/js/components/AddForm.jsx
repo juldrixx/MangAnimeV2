@@ -1,4 +1,5 @@
 // src/js/components/AddForm.jsx
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import uuidv1 from "uuid";
@@ -57,7 +58,7 @@ class ConnectedAddForm extends Component {
                     <div className="input-group-append">
                         <button className="btn btn-outline-secondary" type="submit">Ajouter</button>
                     </div>
-                </div>                     
+                </div>
             </form>
         );
     }
