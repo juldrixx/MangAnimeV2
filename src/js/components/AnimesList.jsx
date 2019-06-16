@@ -3,34 +3,30 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../../css/ItemList.scss";
-import AnimeActions from "./AnimeActions";
+import Anime from "./Anime";
+import { getAnime } from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        animes: state.animes        
+        animes: state.animes
     };
 };
 
 class ConnectedAnimesList extends Component {
 
+    componentDidMount() {
+        this.props.getAnime(this.props.username);
+    }
+
     render() {
         return (
             this.props.animes.map(anime => (
-                <tr key={anime.id}>
-                    <td></td>
-                    <td>{anime.rss_url}</td>
-                    <td>{anime.rss_url}</td>
-                    <td>{anime.rss_url}</td>
-                    <td>{anime.rss_url}</td>
-                    <td>
-                        <AnimeActions anime={anime} />
-                    </td>                    
-                </tr>
+                <Anime key={anime.id} anime={anime} />
             ))
         );
     }
 }
 
-const AnimesList = connect(mapStateToProps)(ConnectedAnimesList);
+const AnimesList = connect(mapStateToProps, {getAnime})(ConnectedAnimesList);
 
 export default AnimesList;

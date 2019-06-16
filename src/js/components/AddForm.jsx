@@ -2,22 +2,13 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import uuidv1 from "uuid";
+import { add, clearErrorAdd } from "../actions/index";
 
-import { addAnime, addManga } from "../actions/index";
-
-function mapDispatchToProps(dispatch, ownProps) {
-    if (ownProps.type === 'anime') {
-        return {
-            addAnime: anime => dispatch(addAnime(anime))
-        };
-    }
-    else if (ownProps.type === 'manga') {
-        return {
-            addManga: manga => dispatch(addManga(manga))
-        };
-    }
-}
+const mapStateToProps = (state) => {
+    return {
+        error_add: state.error_add        
+    };
+};
 
 class ConnectedAddForm extends Component {
     constructor() {
@@ -34,17 +25,19 @@ class ConnectedAddForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const {rss_url} = this.state;
-        const id = uuidv1();
-        
-        this.props.type === 'anime' ? this.props.addAnime({rss_url, id}) : this.props.type === 'manga' && this.props.addManga({rss_url, id});
+        this.props.add([this.props.type, this.props.user, rss_url]);
         this.setState({rss_url: ""});
+    }
+
+    componentWillReceiveProps(newProps) {
+        newProps.error_add && setTimeout(() => {this.props.clearErrorAdd()}, 500);
     }
 
     render() {
         const {rss_url} = this.state;
         return (
             <form className="col-md-12 nopadding" onSubmit={this.handleSubmit}>
-                <div className="input-group">
+                <div className={"input-group" + (this.props.error_add ? " error" : "")}>
                     <input 
                         type="text" 
                         className="form-control"
@@ -64,6 +57,6 @@ class ConnectedAddForm extends Component {
     }
 }
 
-const AddForm = connect(null, mapDispatchToProps)(ConnectedAddForm)
+const AddForm = connect(mapStateToProps, {add, clearErrorAdd})(ConnectedAddForm)
 
 export default AddForm;

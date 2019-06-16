@@ -1,20 +1,27 @@
 // src/js/actions/index.js
 
-import { ADD_MANGA, ADD_ANIME, DELETE_ANIME, DELETE_MANGA } from "../constants/action-types";
+import {UNFOLLOW, GET_MANGA, GET_ANIME, UPDATE, ADD, ADD_ERROR_CLEARED } from "../constants/action-types";
 
-
-export function addAnime(payload) {
-    return { type: ADD_ANIME, payload };
+export function unfollow(payload) {
+    return { type: UNFOLLOW, payload };
 }
 
-export function addManga(payload) {
-    return { type: ADD_MANGA, payload };
+export function getManga(payload) {
+    return { type: GET_MANGA, payload };
 }
 
-export function deleteAnime(payload) {
-    return { type: DELETE_ANIME, payload };
+export function getAnime(payload) {
+    return { type: GET_ANIME, payload };
 }
 
-export function deleteManga(payload) {
-  return { type: DELETE_MANGA, payload };
+export function update(payload) {
+    return { type: UPDATE, payload };
+}
+
+export function add(payload) {
+    return { type: ADD, payload };
+}
+
+export function clearErrorAdd() {
+    return { type: ADD_ERROR_CLEARED };
 }

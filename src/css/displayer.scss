@@ -1,9 +1,30 @@
 .container_display {
     max-width: 90% !important;
     margin: 0 auto;
+    
 
     .nopadding {
         padding: 0 !important;
         margin: 0 !important;
+    }
+
+    table {
+        thead {
+            font-size: 1.3vw;
+        }
+        tbody {
+            font-size: 0.9vw;
+        }
+    }
+    .error {
+        input, button{
+            border-color: red;
+        }   
+    }
+}
+
+@media only screen and (max-width:1000px){
+    table {
+        font-size: 5px;
     }
 }

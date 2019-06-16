@@ -2,33 +2,38 @@
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { deleteManga } from "../actions";
+import { unfollow, update } from "../actions";
 
-const mapDisptachToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        deleteManga: id => dispatch(deleteManga(id))
+        mangas: state.mangas        
     };
-}
+};
 
 class ConnectedMangaActions extends Component {
 
-    handleDeleteClick = () => {
-        this.props.deleteManga(this.props.manga.id);
+    handleUnfollowClick = (event) => {
+        event.preventDefault();
+        this.props.unfollow([this.props.manga.id, 'manga']);
+    }
+
+    handleCheckClick = (event) => {
+        event.preventDefault();
+        this.props.update([this.props.manga.id, this.props.manga.release_number, 'manga']);
     }
 
     render() {
         return (
             <ul className="action_button">
-                <li><i className="fa fa-check" aria-hidden="true" /></li>
-                <li><i className="fa fa-times" aria-hidden="true" /></li>
+                {this.props.manga.not_completed ? <li><i className="fa fa-times" aria-hidden="true" onClick={this.handleCheckClick} /></li> : <li><i className="fa fa-check" aria-hidden="true" /></li>}
                 <li><i className="fa fa-link" aria-hidden="true" /></li>
-                <li><i className="fa fa-trash" aria-hidden="true" onClick={this.handleDeleteClick} /></li>
+                <li><i className="fa fa-trash" aria-hidden="true" onClick={this.handleUnfollowClick} /></li>
             </ul>
         );
     }
 }
 
-const MangaActions = connect(null, mapDisptachToProps)(ConnectedMangaActions);
+const MangaActions = connect(mapStateToProps, {unfollow, update})(ConnectedMangaActions);
 
 
 export default MangaActions;

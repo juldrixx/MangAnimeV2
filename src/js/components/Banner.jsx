@@ -22,7 +22,7 @@ class Banner extends Component {
                     loop
                 />
                 <a href="/" className="return fa fa-angle-left" onClick={this.handleClick}>{null}</a>
-                <h1 className="title_type">Mes {this.props.type === "anime" ? "Anime" : this.props.type === "manga" && "Manga"}</h1>
+                <h1 className="title_type">Mes {this.props.type === "anime" ? "Animes" : this.props.type === "manga" && "Mangas"}</h1>
             </div>
         );
     }

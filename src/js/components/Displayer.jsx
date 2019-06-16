@@ -10,15 +10,15 @@ const Displayer = (props) => (
         <thead>
             <tr>
                 <th scope="col"></th>
-                <th scope="col">Date de la dernière sortie</th>
+                <th scope="col">Date</th>
                 <th scope="col">{props.type === 'anime' ? "Anime" : props.type === 'manga' && 'Manga'}</th>
-                <th scope="col">Dernier {props.type === 'anime' ? "épisode vu" : props.type === 'manga' && 'chapitre lu'}</th>
-                <th scope="col">Dernier {props.type === 'anime' ? "épisode sorti" : props.type === 'manga' && 'chapitre sorti'}</th>
+                <th scope="col">Dernier {props.type === 'anime' ? "vu" : props.type === 'manga' && "lu"}</th>
+                <th scope="col">Dernier sorti</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            {props.type === 'anime' ? <AnimesList /> : props.type === 'manga' && <MangasList />}
+            {props.type === 'anime' ? <AnimesList username={props.user} /> : props.type === 'manga' && <MangasList username={props.user} />}
         </tbody>
     </table>    
 );

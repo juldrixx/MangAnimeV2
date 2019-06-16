@@ -8,11 +8,10 @@
         i {
             text-align: center;
             display: block;
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-            border-radius: 50%;
-            font-size: 18px;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 25px;
             margin-right: 10px;
             transition:all .5s ease 0s;
             text-decoration: none; 
@@ -20,26 +19,20 @@
         }
 
         i:hover {
-            transform: rotate(360deg);
             color: #fff;
         }
 
         .fa-check {
-            background-color: #0dab76;
-            color: #fff;
+            color: #0dab76;
         }
         .fa-times {
-            background-color: #d10531;
-            color: #fff;
+            color: #d10531;
         }
         .fa-link {
-            background-color: #13a1ffc5;
-            color: #fff;
+            color: #13a1ffc5;
         }
         .fa-trash {
-            background-color: #554b4b;
-            color: #fff;
+            color: #554b4b;
         }
     }
-    
 }

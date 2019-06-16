@@ -3,7 +3,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../../css/ItemList.scss";
-import MangaActions from "./MangaActions";
+import Manga from "./Manga";
+import { getManga } from "../actions";
 
 const mapStateToProps = (state) => {
     return {
@@ -13,24 +14,19 @@ const mapStateToProps = (state) => {
 
 class ConnectedMangasList extends Component {
 
+    componentDidMount() {
+        this.props.getManga(this.props.username);
+    }
+
     render() {
         return (
             this.props.mangas.map(manga => (
-                <tr key={manga.id}>
-                    <td></td>
-                    <td>{manga.rss_url}</td>
-                    <td>{manga.rss_url}</td>
-                    <td>{manga.rss_url}</td>
-                    <td>{manga.rss_url}</td>
-                    <td>
-                        <MangaActions manga={manga} />
-                    </td>                    
-                </tr>
+                <Manga key={manga.id} manga={manga} />
             ))
         );
     }
 }
 
-const MangasList = connect(mapStateToProps)(ConnectedMangasList);
+const MangasList = connect(mapStateToProps, {getManga})(ConnectedMangasList);
 
 export default MangasList;
