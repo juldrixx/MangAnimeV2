@@ -19,8 +19,12 @@ class ConnectedAnimesList extends Component {
     }
 
     render() {
+        const {animes} = this.props;
+        animes.sort(function (a, b) {
+            return (a.not_completed === b.not_completed) ? 0 : a.not_completed ? -1 : 1;
+        });
         return (
-            this.props.animes.map(anime => (
+            animes.map(anime => (
                 <Anime key={anime.id} anime={anime} />
             ))
         );

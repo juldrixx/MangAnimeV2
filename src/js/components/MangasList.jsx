@@ -19,8 +19,12 @@ class ConnectedMangasList extends Component {
     }
 
     render() {
+        const {mangas} = this.props;
+        mangas.sort(function (a, b) {
+            return (a.not_completed === b.not_completed) ? 0 : a.not_completed ? -1 : 1;
+        });
         return (
-            this.props.mangas.map(manga => (
+            mangas.map(manga => (
                 <Manga key={manga.id} manga={manga} />
             ))
         );
