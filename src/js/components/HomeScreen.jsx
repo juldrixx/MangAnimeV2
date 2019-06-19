@@ -1,8 +1,8 @@
 // src/js/components/HomeScreen.jsx
 
 import React, { Component } from 'react';
-import manga_preview_img from '../../img/manga.jpg';
-import anime_preview_img from '../../img/anime.png';
+import manga_preview_img from '../../img/manga.png';
+import anime_preview_img from '../../img/anime.jpg';
 import "../../css/preview.scss";
 
 
@@ -10,8 +10,7 @@ class Navbar extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        const {cookies} = this.props;
-        cookies.remove('username');
+        localStorage.removeItem('username');
     }
 
     render() {

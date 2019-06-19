@@ -7,7 +7,6 @@ const initialState = {
 };
 
 function rootReducer(state = initialState, action) {
-    console.log(action)
     if (action.type === MANGA_LOADED) {
         return Object.assign({}, state, {
             mangas: state.mangas.concat(action.payload)

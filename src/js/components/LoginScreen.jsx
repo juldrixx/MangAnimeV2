@@ -21,8 +21,7 @@ class ConnectedLoginScreen extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const {username} = this.state;
-        const {cookies} = this.props;
-        cookies.set('username', username);
+        localStorage.setItem('username', username);
         this.setState({username: ""});
     }
 
