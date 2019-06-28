@@ -15,8 +15,15 @@
             overflow: hidden;            
         }
         #manga_preview img, #anime_preview img{
-            height: 100%;
-            width: 100%;
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            right: -100%;
+            bottom: -100%;
+            margin: auto;
+            max-height: 100%;
+            min-width: 100%;
+            min-height: 100%;
         }
 
         #manga_preview h1, #anime_preview h1{
