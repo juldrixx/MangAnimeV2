@@ -1,8 +1,9 @@
-import { MANGA_LOADED, ANIME_LOADED, UNFOLLOW_SUCCEEDED, UPDATE_SUCCEEDED, ADDED, ADD_ERRORED, ADD_ERROR_CLEARED} from "../constants/action-types";
+import { MANGA_LOADED, ANIME_LOADED, UNFOLLOW_SUCCEEDED, UPDATE_SUCCEEDED, ADDED, ADD_ERRORED, ADD_ERROR_CLEARED, LOGOUT, LOGIN} from "../constants/action-types";
 
 const initialState = {
     mangas: [],
     animes: [],
+    username: localStorage.getItem('username'),
     error_add: false
 };
 
@@ -75,15 +76,31 @@ function rootReducer(state = initialState, action) {
     }
 
     if (action.type === ADDED) {
-        if (action.payload[1] === 'manga') {
-            return Object.assign({}, state, {
-                mangas: state.mangas.concat(action.payload[0])
-            });
+        if (action.payload[1] === 'manga') {		
+			const manga = state.mangas.filter(manga => {
+				if(manga.id === action.payload[0][0].id) {
+					return manga;
+				}
+			});
+			
+			if (manga.length === 0)  {
+				return Object.assign({}, state, {
+					mangas: state.mangas.concat(action.payload[0])
+				});
+			}
         }
-        else if (action.payload[1] === 'anime') {
-            return Object.assign({}, state, {
-                animes: state.animes.concat(action.payload[0])
-            });
+        else if (action.payload[1] === 'anime') {			
+			const anime = state.animes.filter(anime => {
+				if(anime.id === action.payload[0][0].id) {
+					return anime;
+				}
+			});
+			
+			if (anime.length === 0)  {
+				return Object.assign({}, state, {
+					animes: state.animes.concat(action.payload[0])
+				});
+			}
         }
     }
 
@@ -99,6 +116,22 @@ function rootReducer(state = initialState, action) {
             ...state,
             error_add: false
         };
+    }
+
+    if(action.type === LOGIN) {
+        localStorage.setItem('username', action.payload);
+        return {
+            ...state,
+            username: action.payload
+        }
+    }
+
+    if(action.type === LOGOUT) {
+        localStorage.removeItem('username');
+        return {
+            ...state,
+            username: ""
+        }
     }
 
     return state;

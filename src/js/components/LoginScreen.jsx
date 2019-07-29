@@ -3,12 +3,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import '../../css/loginscreen.scss'
+import { login } from "../actions";
 
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return ({
-        state: state,
-        cookies: ownProps.cookies
+        username: state.username,
     });
 };
 
@@ -21,7 +20,7 @@ class ConnectedLoginScreen extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const {username} = this.state;
-        localStorage.setItem('username', username);
+        this.props.login(username);
         this.setState({username: ""});
     }
 
@@ -64,6 +63,6 @@ class ConnectedLoginScreen extends Component {
     }
 }
 
-const LoginScreen = connect(mapStateToProps)(ConnectedLoginScreen)
+const LoginScreen = connect(mapStateToProps, { login })(ConnectedLoginScreen)
 
 export default LoginScreen;

@@ -1,16 +1,18 @@
 // src/js/components/HomeScreen.jsx
 
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import manga_preview_img from '../../img/manga.png';
 import anime_preview_img from '../../img/anime.jpg';
 import "../../css/preview.scss";
+import { logout } from "../actions";
 
 
 class Navbar extends Component {
 
     handleClick = (event) => {
         event.preventDefault();
-        localStorage.removeItem('username');
+        this.props.logout();
     }
 
     render() {
@@ -36,4 +38,4 @@ class Navbar extends Component {
     }    
 }
 
-export default Navbar;
+export default connect(null, { logout })(Navbar);

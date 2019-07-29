@@ -11,3 +11,7 @@ export const ADD = "ADD";
 export const ADDED = "ADDED";
 export const ADD_ERRORED = "ADD_ERRORED";
 export const ADD_ERROR_CLEARED = "ADD_ERROR_CLEARED";
+export const LOGIN = "LOGIN";
+export const LOGIN_ERROR = "LOGIN_ERROR";
+export const LOGOUT = "LOGOUT";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";

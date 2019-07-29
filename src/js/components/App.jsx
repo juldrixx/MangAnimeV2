@@ -2,6 +2,7 @@
 
 import React, { Component, Fragment } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import { withCookies } from "react-cookie";
 import Displayer from "./Displayer.jsx";
 import AddForm from "./AddForm.jsx";
@@ -10,9 +11,8 @@ import LoginScreen from "./LoginScreen.jsx";
 import Banner from "./Banner.jsx";
 
 class App extends Component {
-    
     render() {
-        var routes  = (localStorage.getItem('username') === undefined || localStorage.getItem('username') === "") ? (
+        var routes  = (this.props.username === undefined || this.props.username === "" || this.props.username === null) ? (
             <Fragment>
                 <Redirect to="/Login" />
                 <Route  component={LoginScreen} /> 
@@ -26,8 +26,8 @@ class App extends Component {
                         <Fragment>
                             <Banner type="manga" />
                             <div className="container_display">
-                                <AddForm type="manga" user={localStorage.getItem('username')} />
-                                <Displayer type="manga" user={localStorage.getItem('username')} />
+                                <AddForm type="manga" />
+                                <Displayer type="manga" />
                             </div>
                         </Fragment>
                     )} />
@@ -36,8 +36,8 @@ class App extends Component {
                         <Fragment>
                             <Banner type="anime" />
                             <div className="container_display">
-                                <AddForm type="anime" user={localStorage.getItem('username')} />
-                                <Displayer type="anime" user={localStorage.getItem('username')} />
+                                <AddForm type="anime" />
+                                <Displayer type="anime" />
                             </div>
                         </Fragment>
                     )} />
@@ -56,4 +56,12 @@ class App extends Component {
     }
 }
 
-export default withCookies(App);
+const mapStateToProps = (state) => {
+    console.log('a', state)
+    return {
+        username: state.username        
+    };
+};
+
+
+export default connect(mapStateToProps, null)(withCookies(App));

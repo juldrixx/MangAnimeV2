@@ -8,7 +8,8 @@ import { getManga } from "../actions";
 
 const mapStateToProps = (state) => {
     return {
-        mangas: state.mangas        
+        mangas: state.mangas,
+        username: state.username
     };
 };
 

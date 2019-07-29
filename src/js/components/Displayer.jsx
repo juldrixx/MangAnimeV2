@@ -18,7 +18,7 @@ const Displayer = (props) => (
             </tr>
         </thead>
         <tbody>
-            {props.type === 'anime' ? <AnimesList username={props.user} /> : props.type === 'manga' && <MangasList username={props.user} />}
+            {props.type === 'anime' ? <AnimesList /> : props.type === 'manga' && <MangasList />}
         </tbody>
     </table>    
 );

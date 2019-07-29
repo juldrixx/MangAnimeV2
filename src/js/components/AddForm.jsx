@@ -6,7 +6,8 @@ import { add, clearErrorAdd } from "../actions/index";
 
 const mapStateToProps = (state) => {
     return {
-        error_add: state.error_add        
+        error_add: state.error_add,
+        username: state.username     
     };
 };
 
@@ -25,7 +26,7 @@ class ConnectedAddForm extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const {rss_url} = this.state;
-        this.props.add([this.props.type, this.props.user, rss_url]);
+        this.props.add([this.props.type, this.props.username, rss_url]);
         this.setState({rss_url: ""});
     }
 

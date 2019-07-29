@@ -1,6 +1,6 @@
 // src/js/actions/index.js
 
-import {UNFOLLOW, GET_MANGA, GET_ANIME, UPDATE, ADD, ADD_ERROR_CLEARED } from "../constants/action-types";
+import {UNFOLLOW, GET_MANGA, GET_ANIME, UPDATE, ADD, ADD_ERROR_CLEARED, LOGIN, LOGOUT } from "../constants/action-types";
 
 export function unfollow(payload) {
     return { type: UNFOLLOW, payload };
@@ -24,4 +24,12 @@ export function add(payload) {
 
 export function clearErrorAdd() {
     return { type: ADD_ERROR_CLEARED };
+}
+
+export function login(payload) {
+    return { type: LOGIN, payload };
+}
+
+export function logout() {
+    return { type: LOGOUT };
 }
