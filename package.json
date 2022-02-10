@@ -23,7 +23,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "react-cookie": "^4.0.0",
     "react-player": "^1.11.1",
     "react-redux": "^6.0.0",
